@@ -3,10 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>学IT - 后台管理系统</title>
-    <link rel="stylesheet" href="/public/assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/public/assets/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="/public/assets/nprogress/nprogress.css">
-    <link rel="stylesheet" href="/public/less/index.css">
+    <?php include('./views/common/style.html'); ?>
 </head>
 <body>
     <!-- 登录 -->
@@ -32,29 +29,9 @@
             </form>
         </div>
     </div>
-    
-    <script src="/public/assets/jquery/jquery.min.js"></script>
-    <script src="/public/assets/jquery-cookie/jquery.cookie.js"></script>
-    <script src="/public/assets/bootstrap/js/bootstrap.min.js"></script>
+    <?php include('./views/common/script.html'); ?>
     <script type="text/javascript">
-        $('#loginBtn').click(function(){
-            $.ajax({
-                type : 'post',
-                url : '/api/login',
-                data : $('#loginForm').serialize(),
-                dataType : 'json',
-                success : function(data){
-                    if(data.code == 200){
-                        // 把用户的登录信息存储到cookie中，方便跨页面共享数据
-                        $.cookie('loginInfo',JSON.stringify(data.result),{path:'/'});
-                        // 登录成功，跳转到主页面
-                        location.href = '/main/index'
-                    }
-                }
-            });
-
-            return false;// 阻止按钮的默认行为
-        });
+        require(['login']);
     </script>
 </body>
 </html>
