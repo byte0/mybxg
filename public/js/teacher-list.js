@@ -1,4 +1,4 @@
-define(['jquery','template'],function($,template){
+define(['jquery','template','bootstrap'],function($,template){
   // 调用接口获取所有的讲师数据
   $.ajax({
     type : 'get',
@@ -29,6 +29,23 @@ define(['jquery','template'],function($,template){
                 $(that).text('启用');
               }
             }
+          }
+        });
+      });
+
+      // 查看讲师
+      $('.preview').click(function(){
+        var td = $(this).closest('td');
+        var tcId = td.attr('data-tcId');
+        $.ajax({
+          type : 'get',
+          url : '/api/teacher/view',
+          data : {tc_id : tcId},
+          dataType : 'json',
+          success : function(data){
+            var html = template('modalTpl',data.result);
+            $('#modalInfo').html(html);
+            $('#teacherModal').modal();
           }
         });
       });
