@@ -25,31 +25,34 @@
             <li class="active">{{operate}}</li>
         </ol>
         <div class="teacher-add">
-            <form action="" class="form-horizontal col-xs-offset-2">
+            <form id="teacherForm" class="form-horizontal col-xs-offset-2">
+                {{if tc_id}}
+                <input type="hidden" name="tc_id" value="{{tc_id}}">
+                {{/if}}
                 <div class="form-group">
                     <label for="" class="col-xs-3 control-label">姓名</label>
                     <div class="col-xs-4">
-                        <input value="{{tc_name}}" type="text" class="form-control input-sm" placeholder="讲师名称">
+                        <input name="tc_name" value="{{tc_name}}" type="text" class="form-control input-sm" placeholder="讲师名称">
                     </div>
                 </div>
                 {{if !tc_id}}
                 <div class="form-group">
                     <label for="" class="col-xs-3 control-label">密码</label>
                     <div class="col-xs-4">
-                        <input type="password" class="form-control input-sm">
+                        <input name="tc_pass" type="password" class="form-control input-sm">
                     </div>
                 </div>
                 {{/if}}
                 <div class="form-group">
                     <label for="" class="col-xs-3 control-label">入职时间</label>
                     <div class="col-xs-4">
-                        <input value="{{tc_join_date}}" type="text" class="form-control input-sm">
+                        <input name="tc_join_date" value="{{tc_join_date}}" type="text" class="form-control input-sm">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="" class="col-xs-3 control-label">类型</label>
                     <div class="col-xs-2">
-                        <select name="" class="form-control input-sm">
+                        <select name="tc_type" class="form-control input-sm">
                             <option value="1" {{if tc_type==1}}selected{{/if}}>讲师</option>
                             <option value="0" {{if tc_type==0}}selected{{/if}}>管理员</option>
                         </select>
@@ -68,7 +71,7 @@
                 </div>
                 <div class="form-group">
                     <div class="col-xs-7">
-                        <input type="button" value="提交" class="btn btn-success btn-sm pull-right">
+                        <input id="teacherBtn" type="button" value="提交" class="btn btn-success btn-sm pull-right">
                     </div>                          
                 </div>
             </form>
