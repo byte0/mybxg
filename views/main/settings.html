@@ -25,10 +25,11 @@
         </div>
     </div>
     <script type="text/template" id="settingsTpl">
-        <form action="" class="form-horizontal">
+        <form id="settingsForm" class="form-horizontal">
             <div class="form-group">
                 <label for="" class="col-xs-3 control-label">姓名</label>
                 <div class="col-xs-5">
+                    <input type="hidden" name="tc_id" value="{{tc_id}}">
                     <p class="form-control-static">{{tc_name}}</p>
                 </div>
             </div>
@@ -72,13 +73,13 @@
             <div class="form-group">
                 <label for="" class="col-xs-3 control-label">籍贯</label>
                 <div class="col-xs-5" id="pcd">
-                    <select id="p" data-id='{{tc_province}}' name="" class="form-control input-sm">
+                    <select id="p" data-id='{{tc_province}}' name="tc_province" class="form-control input-sm">
                         <option value="">请选择省...</option>
                     </select>
-                    <select id="c" data-id='{{tc_city}}' name="" class="form-control input-sm">
+                    <select id="c" data-id='{{tc_city}}' name="tc_city" class="form-control input-sm">
                         <option value="">请选择市...</option>
                     </select>
-                    <select id="d" data-id='{{tc_district}}' name="" class="form-control input-sm">
+                    <select id="d" data-id='{{tc_district}}' name="tc_district" class="form-control input-sm">
                         <option value="">请选择区/县</option>
                     </select>
                 </div>
@@ -109,7 +110,7 @@
             </div>
             <div class="form-group">
                 <div class="col-xs-8">
-                    <input type="button" class="btn btn-success btn-sm pull-right" value="保 存">
+                    <input type="submit" class="btn btn-success btn-sm pull-right" value="保 存">
                     <a href="./repass.html" class="btn btn-link btn-sm pull-right">更改密码？</a>
                 </div>
             </div>
