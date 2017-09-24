@@ -11,6 +11,7 @@ require.config({
     form : 'jquery-form/jquery.form',
     uploadify : 'uploadify/jquery.uploadify.min',
     region : 'jquery-region/jquery.region',
+    ckeditor : 'ckeditor/ckeditor',
     util : '../js/util',
     common : '../js/common',
     login : '../js/login',
@@ -30,6 +31,9 @@ require.config({
     },
     uploadify : {
       deps : ['jquery']
+    },
+    ckeditor : {
+      exports : 'CKEDITOR'
     }
   }
 });

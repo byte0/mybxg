@@ -1,4 +1,4 @@
-define(['jquery','template','uploadify','region'],function($,template){
+define(['jquery','template','ckeditor','uploadify','region','datepicker','language'],function($,template,CKEDITOR){
   // 调用接口获取个人信息
   $.ajax({
     type : 'get',
@@ -25,6 +25,13 @@ define(['jquery','template','uploadify','region'],function($,template){
       // 处理省市县三级联动
       $('#pcd').region({
         url : '/public/assets/jquery-region/region.json'
+      });
+      // 处理富文本
+      CKEDITOR.replace('editor',{
+        toolbarGroups : [
+          { name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+          { name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] }
+        ]
       });
     }
   });

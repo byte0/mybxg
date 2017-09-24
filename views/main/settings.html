@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>学IT - 后台管理系统</title>
     <?php include('./views/common/style.html'); ?>
+    <link rel="stylesheet" type="text/css" href="/public/assets/bootstrap-datepicker/css/bootstrap-datepicker.css">
+
 </head>
 <body>
     
@@ -64,7 +66,7 @@
             <div class="form-group">
                 <label for="" class="col-xs-3 control-label">出生日期</label>
                 <div class="col-xs-5">
-                    <input name="tc_birthday" value="{{tc_birthday}}" type="text" class="form-control input-sm">
+                    <input data-provide='datepicker' data-date-language='zh-CN' data-date-format='yyyy-mm-dd' name="tc_birthday" value="{{tc_birthday}}" type="text" class="form-control input-sm">
                 </div>
             </div>
             <div class="form-group">
@@ -96,13 +98,13 @@
             <div class="form-group">
                 <label for="" class="col-xs-3 control-label">入职日期</label>
                 <div class="col-xs-5">
-                    <input name="tc_join_date" value="{{tc_join_date}}" type="text" class="form-control input-sm">
+                    <input data-provide='datepicker' data-date-language='zh-CN' data-date-format='yyyy-mm-dd'  name="tc_join_date" value="{{tc_join_date}}" type="text" class="form-control input-sm">
                 </div>
             </div>
             <div class="form-group">
                 <label for="" class="col-xs-3 control-label">个人介绍</label>
                 <div class="col-xs-5 ckeditor">
-                    <textarea name="tc_introduce" rows="15" class="form-control input-sm">{{tc_introduce}}</textarea>
+                    <textarea id="editor" name="tc_introduce" rows="15" class="form-control input-sm">{{tc_introduce}}</textarea>
                 </div>
             </div>
             <div class="form-group">
