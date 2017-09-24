@@ -40,19 +40,19 @@
             <!-- 步聚 -->
             <ul class="forwards list-unstyled">
                 <li>
-                    <a href="./course_add_step1.html" class="active">
+                    <a href="/course/basic?cs_id={{cs_id}}" class="active">
                     <b>1</b>
                     基本信息
                     </a>
                 </li>
                 <li>
-                    <a href="./course_add_step2.html">
+                    <a href="/course/picture?cs_id={{cs_id}}">
                     <b>2</b>
                     课程图片
                     </a>
                 </li>
                 <li>
-                    <a href="./course_add_step3.html">
+                    <a href="/course/lesson?cs_id={{cs_id}}">
                     <b>3</b>
                     课时管理
                     </a>
@@ -74,7 +74,7 @@
                     <div class="form-group">
                         <label for="" class="col-xs-2 control-label">课程描述</label>
                         <div class="col-xs-8 ckeditor">
-                            <textarea name="cs_brief" rows="15" class="form-control input-sm">{{cs_brief}}</textarea>
+                            <textarea id="editor" name="cs_brief" rows="15" class="form-control input-sm">{{cs_brief}}</textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -93,7 +93,7 @@
                     <div class="form-group">
                         <label for="" class="col-xs-2 control-label">分类</label>
                         <div class="col-xs-8">
-                            <select name="" class="form-control input-sm">
+                            <select id="firstType" name="" class="form-control input-sm">
                                 <option value="">请选择一级分类...</option>
                                 {{if category}}
                                     {{each category.top}}
@@ -101,7 +101,7 @@
                                     {{/each}}
                                 {{/if}}
                             </select>
-                            <select name="" class="form-control input-sm">
+                            <select id="secondType" name="" class="form-control input-sm">
                                 <option value="">请选择二级分类...</option>
                                 {{if category}}
                                     {{each category.childs}}
