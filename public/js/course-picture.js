@@ -13,6 +13,11 @@ define(['jquery','template','util','uploadify','jcrop','form'],function($,templa
       // 解析数据，渲染页面
       var html = template('pictureTpl',data.result);
       $('#pictureInfo').html(html);
+
+      // 选中图片
+      var img = $('.preview img').eq(0);
+      var nowCrop = null;
+
       // 处理封面上传
       $('#myfile').uploadify({
         width : 80,
@@ -27,6 +32,9 @@ define(['jquery','template','util','uploadify','jcrop','form'],function($,templa
         onUploadSuccess : function(a,b,c){
           var obj = JSON.parse(b.trim());
           $('.preview img').attr('src',obj.result.path);
+          // 上传成功之后直接选中选区
+          cropImage();
+          $('#cropBtn').text('保存图片').attr('data-flag',true);
         }
       });
       // 处理封面裁切
@@ -55,13 +63,16 @@ define(['jquery','template','util','uploadify','jcrop','form'],function($,templa
         }
       });
 
-      // 选中图片
-      var img = $('.preview img').eq(0);
+      
       // 封装一个独立的方法实现裁切图片功能
       function cropImage(){
         img.Jcrop({
           aspectRatio : 2
         },function(){
+          // 销毁之前的裁切实例
+          nowCrop && nowCrop.destroy();
+          nowCrop = this;
+
           // 获取图片的宽度和高度
           var width = this.ui.stage.width;
           var height = this.ui.stage.height;
