@@ -21,7 +21,8 @@ require.config({
     index : '../js/index',
     courselist : '../js/course-list',
     courseadd : '../js/course-add',
-    coursebasic : '../js/course-basic'
+    coursebasic : '../js/course-basic',
+    coursepicture : '../js/course-picture'
   },
   shim : {
     bootstrap : {
