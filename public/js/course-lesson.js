@@ -1,4 +1,4 @@
-define(['jquery','template','util','bootstrap'],function($,template,util){
+define(['jquery','template','util','bootstrap','form'],function($,template,util){
   // 设置导航菜单选中
   util.setMenu('/course/add');
   // 获取课程ID
@@ -20,6 +20,21 @@ define(['jquery','template','util','bootstrap'],function($,template,util){
         $('#modalInfo').html(html);
         // 显示模态框
         $('#chapterModal').modal();
+        // 绑定添加课时提交事件
+        $('#addOrEditLesson').click(function(){
+          $('#lessonForm').ajaxSubmit({
+            type : 'post',
+            url : '/api/course/chapter/add',
+            data : {ct_cs_id : csId},
+            dataType : 'json',
+            success : function(data){
+              if(data.code == 200){
+                // 刷新页面
+                location.reload();
+              }
+            }
+          });
+        });
       });
       // 绑定编辑课时事件
       $('.editBtn').click(function(){
@@ -38,6 +53,21 @@ define(['jquery','template','util','bootstrap'],function($,template,util){
             $('#modalInfo').html(html);
             // 显示模态框
             $('#chapterModal').modal();
+            // 绑定编辑课时提交事件
+            $('#addOrEditLesson').click(function(){
+              $('#lessonForm').ajaxSubmit({
+                type : 'post',
+                url : '/api/course/chapter/modify',
+                data : {ct_cs_id : csId,ct_id : ctId},
+                dataType : 'json',
+                success : function(data){
+                  if(data.code == 200){
+                    // 刷新页面
+                    location.reload();
+                  }
+                }
+              });
+            });
           }
         });
         
